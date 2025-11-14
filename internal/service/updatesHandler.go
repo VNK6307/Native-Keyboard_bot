@@ -13,8 +13,11 @@ func (s *Service) startPersonalForm(chatID uint64) {
 		return
 	}
 }
-func checkState(id uint64, text string) {
 
+func (s *Service) startTeamForm(chatID uint64) {
+	//TODO Realize me!
+
+	s.askTeamName(chatID)
 }
 
 func mailList(id uint64) {
@@ -22,9 +25,5 @@ func mailList(id uint64) {
 }
 
 func sendCompetitors(id uint64) {
-
-}
-
-func startTeamForm(id uint64) {
 
 }

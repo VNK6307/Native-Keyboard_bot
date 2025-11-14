@@ -22,7 +22,6 @@ func main() {
 		log.Fatal("Could not load configuration", err)
 	}
 
-	fmt.Printf("Bot token: %+v\n", cfg.BotToken)
 	telegramController := controller.NewTelegramController(cfg)
 	telegramService := service.NewTelegramService(telegramController)
 

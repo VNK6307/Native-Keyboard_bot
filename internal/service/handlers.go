@@ -17,19 +17,19 @@ func (s *Service) handleMessage(message *models.Message) {
 	// TODO Realize me!
 	chatID, text, msgID := message.Chat.ID, message.Text, message.MessageID
 
-	fmt.Printf("ChatID: %d; MessageID: %d\n=====Text - %s\n", chatID, msgID, text)
+	fmt.Printf("ChatID: %d; MessageID: %d\n=====Text - %s\n", chatID, msgID, text) // TODO Delete before finish
 
 	switch text {
 	case "/personal":
 		s.startPersonalForm(chatID)
 	case "/team":
-		startTeamForm(chatID)
+		s.startTeamForm(chatID)
 	case "/list":
 		sendCompetitors(chatID)
 	case "/send":
 		mailList(chatID)
 	default:
-		checkState(chatID, text)
+		s.checkState(chatID, text)
 	}
 }
 

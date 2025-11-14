@@ -86,3 +86,33 @@ func (tc *TelegramController) SendMessage(chatID uint64, text string) (int, erro
 	}
 	return result.Result.MessageID, nil
 }
+
+func (tc *TelegramController) SendMessageWithTeamKeyboard(chatID uint64, keyboard [][]models.KeyboardButton) (int, error) {
+	payload := map[string]interface{}{
+		"chat_id":    chatID,
+		"parse_mode": "HTML",
+		"keyboard":   keyboard,
+	}
+
+	fmt.Println("Вошел в отправку клавиатуры") // TODO Delete before finish
+	fmt.Printf("Клавиатура - %+v\n", keyboard) // TODO Delete before finish
+
+	body, err := tc.makeRequest("sendMessage", payload)
+	if err != nil {
+		return 0, fmt.Errorf("telegram error: %w", err)
+	}
+
+	fmt.Println("Запрос на отправку клавиатуры выполнен")
+
+	var res struct {
+		Result struct {
+			MessageID int `json:"message_id"`
+		} `json:"result"`
+	}
+
+	if err := json.Unmarshal(body, &res); err != nil {
+		return 0, fmt.Errorf("unmarshal error: %w", err)
+	}
+
+	return res.Result.MessageID, nil
+}
