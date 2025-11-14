@@ -1,7 +1,7 @@
 package service
 
 import (
-	"bot/keyboard/models"
+	"bot/keyboard/internal/models"
 	"fmt"
 )
 

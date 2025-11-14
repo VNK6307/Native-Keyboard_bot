@@ -1,7 +1,7 @@
 package service
 
 import (
-	"bot/keyboard/cmd/internal/controller"
+	"bot/keyboard/internal/controller"
 )
 
 type Service struct {

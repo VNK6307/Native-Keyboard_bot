@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bot/keyboard/cmd/internal/config"
-	"bot/keyboard/cmd/internal/controller"
-	"bot/keyboard/cmd/internal/service"
+	"bot/keyboard/internal/config"
+	"bot/keyboard/internal/controller"
+	"bot/keyboard/internal/service"
 	"fmt"
 	"log"
 )

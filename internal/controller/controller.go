@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"bot/keyboard/cmd/internal/config"
-	"bot/keyboard/models"
+	"bot/keyboard/internal/config"
+	"bot/keyboard/internal/models"
 	"bytes"
 	"encoding/json"
 	"fmt"
