@@ -7,16 +7,30 @@ import (
 
 func (s *Service) HandleUpdate(update models.Update) {
 	if update.Message != nil {
-		handleMessage(update.Message)
+		s.handleMessage(update.Message)
 	} else if update.CallbackQuery != nil {
 		handleCallbackQuery(update.CallbackQuery)
 	}
 }
 
-func handleMessage(message *models.Message) {
+func (s *Service) handleMessage(message *models.Message) {
+	// TODO Realize me!
 	chatID, text, msgID := message.Chat.ID, message.Text, message.MessageID
 
 	fmt.Printf("ChatID: %d; MessageID: %d\n=====Text - %s\n", chatID, msgID, text)
+
+	switch text {
+	case "/personal":
+		s.startPersonalForm(chatID)
+	case "/team":
+		startTeamForm(chatID)
+	case "/list":
+		sendCompetitors(chatID)
+	case "/send":
+		mailList(chatID)
+	default:
+		checkState(chatID, text)
+	}
 }
 
 func handleCallbackQuery(query *models.CallbackQuery) {

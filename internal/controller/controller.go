@@ -64,3 +64,25 @@ func (tc *TelegramController) GetUpdates(offset int) ([]models.Update, error) {
 
 	return res.Result, nil
 }
+
+func (tc *TelegramController) SendMessage(chatID uint64, text string) (int, error) {
+	payload := map[string]interface{}{
+		"chat_id":    chatID,
+		"text":       text,
+		"parse_mode": "HTML",
+	}
+	res, err := tc.makeRequest("sendMessage", payload)
+	if err != nil {
+		return 0, err
+	}
+	var result struct {
+		Result struct {
+			MessageID int `json:"message_id"`
+		}
+	}
+	err = json.Unmarshal(res, &result)
+	if err != nil {
+		return 0, err
+	}
+	return result.Result.MessageID, nil
+}

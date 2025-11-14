@@ -24,3 +24,12 @@ type CallbackQuery struct {
 	}
 	Data string
 }
+
+type InlineButton struct {
+	Text         string `json:"text"`
+	CallbackData string `json:"callback_data"`
+}
+
+type KeyboardButton struct {
+	Text string `json:"text"`
+}
