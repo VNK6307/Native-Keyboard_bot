@@ -39,7 +39,7 @@ func (s *Service) saveTeamName(chatID uint64, name string) {
 	}
 
 	teamKeyboard := [][]models.KeyboardButton{row1, row2}
-	_, err = s.tgc.SendMessageWithTeamKeyboard(chatID, teamKeyboard)
+	_, err = s.tgc.SendMessageWithTeamKeyboard(chatID, "", teamKeyboard)
 	if err != nil {
 		return
 	}

@@ -87,9 +87,10 @@ func (tc *TelegramController) SendMessage(chatID uint64, text string) (int, erro
 	return result.Result.MessageID, nil
 }
 
-func (tc *TelegramController) SendMessageWithTeamKeyboard(chatID uint64, keyboard [][]models.KeyboardButton) (int, error) {
+func (tc *TelegramController) SendMessageWithTeamKeyboard(chatID uint64, s string, keyboard [][]models.KeyboardButton) (int, error) {
 	payload := map[string]interface{}{
 		"chat_id":    chatID,
+		"text":       s,
 		"parse_mode": "HTML",
 		"keyboard":   keyboard,
 	}
